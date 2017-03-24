@@ -7,17 +7,40 @@
 //
 
 import UIKit
+import CoreData
+import UserNotifications
+import Firebase
+import FirebaseDatabase
 
+
+/* Not Used //
+class UserAccount: NSObject {
+    var name = String()
+    var password = String()
+}
+*/
+
+let appVersion = "1.0"
 class ViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        print("Testing the program.  This is version \(appVersion)")
+        let isUserLoggedIn:Bool = false
+        segueIfUserIsLoggedIn(userStatus: isUserLoggedIn)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func segueIfUserIsLoggedIn( userStatus: Bool ) {
+        //checks to see the status of the user, sends to screen - always runs on app launch.
+        if (FIRAuth.auth()?.currentUser == nil) {
+            performSegue(withIdentifier: "sendToLogin", sender: self)
+        } else {
+            performSegue(withIdentifier: "sendToDashboard", sender: self)
+        }
     }
 
 

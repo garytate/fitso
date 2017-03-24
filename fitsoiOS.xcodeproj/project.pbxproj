@@ -7,15 +7,34 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E44D8251E851BC9007F2DA5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E555FA81E8127D8008DAE2D /* Main.storyboard */; };
+		4E44D8271E851BFD007F2DA5 /* DashboardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E44D8261E851BFD007F2DA5 /* DashboardVC.swift */; };
 		4E555FA51E8127D8008DAE2D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E555FA41E8127D8008DAE2D /* AppDelegate.swift */; };
 		4E555FA71E8127D8008DAE2D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E555FA61E8127D8008DAE2D /* ViewController.swift */; };
-		4E555FAA1E8127D8008DAE2D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E555FA81E8127D8008DAE2D /* Main.storyboard */; };
 		4E555FAD1E8127D8008DAE2D /* fitsoiOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4E555FAB1E8127D8008DAE2D /* fitsoiOS.xcdatamodeld */; };
 		4E555FAF1E8127D8008DAE2D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E555FAE1E8127D8008DAE2D /* Assets.xcassets */; };
 		4E555FB21E8127D8008DAE2D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E555FB01E8127D8008DAE2D /* LaunchScreen.storyboard */; };
+		4E62729D1E827C8800090B77 /* ForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6272981E827C8800090B77 /* ForgotPasswordVC.swift */; };
+		4E62729E1E827C8800090B77 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E6272991E827C8800090B77 /* GoogleService-Info.plist */; };
+		4E62729F1E827C8800090B77 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E62729A1E827C8800090B77 /* LoginVC.swift */; };
+		4E6272A01E827C8800090B77 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E62729B1E827C8800090B77 /* RegisterVC.swift */; };
+		4EC5D7B71E8555BF00C9CEF7 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC5D7B61E8555BF00C9CEF7 /* ProfileVC.swift */; };
+		4EE101C31E82B6B900598F4A /* AkiraTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE101B71E82B6B900598F4A /* AkiraTextField.swift */; };
+		4EE101C41E82B6B900598F4A /* HoshiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE101B81E82B6B900598F4A /* HoshiTextField.swift */; };
+		4EE101C51E82B6B900598F4A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4EE101B91E82B6B900598F4A /* Info.plist */; };
+		4EE101C61E82B6B900598F4A /* IsaoTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE101BA1E82B6B900598F4A /* IsaoTextField.swift */; };
+		4EE101C71E82B6B900598F4A /* JiroTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE101BB1E82B6B900598F4A /* JiroTextField.swift */; };
+		4EE101C81E82B6B900598F4A /* KaedeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE101BC1E82B6B900598F4A /* KaedeTextField.swift */; };
+		4EE101C91E82B6B900598F4A /* MadokaTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE101BD1E82B6B900598F4A /* MadokaTextField.swift */; };
+		4EE101CA1E82B6B900598F4A /* MinoruTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE101BE1E82B6B900598F4A /* MinoruTextField.swift */; };
+		4EE101CB1E82B6B900598F4A /* TextFieldEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE101C01E82B6B900598F4A /* TextFieldEffects.swift */; };
+		4EE101CC1E82B6B900598F4A /* YokoTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE101C11E82B6B900598F4A /* YokoTextField.swift */; };
+		4EE101CD1E82B6B900598F4A /* YoshikoTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE101C21E82B6B900598F4A /* YoshikoTextField.swift */; };
+		D4CA2F29682C458DC4464CEC /* Pods_fitsoiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 953930E5B8077019B16B6EEA /* Pods_fitsoiOS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4E44D8261E851BFD007F2DA5 /* DashboardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardVC.swift; sourceTree = "<group>"; };
 		4E555FA11E8127D8008DAE2D /* fitsoiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fitsoiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E555FA41E8127D8008DAE2D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E555FA61E8127D8008DAE2D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -24,6 +43,26 @@
 		4E555FAE1E8127D8008DAE2D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4E555FB11E8127D8008DAE2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4E555FB31E8127D8008DAE2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4E6272981E827C8800090B77 /* ForgotPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVC.swift; sourceTree = "<group>"; };
+		4E6272991E827C8800090B77 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4E62729A1E827C8800090B77 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		4E62729B1E827C8800090B77 /* RegisterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
+		4EC5D7B61E8555BF00C9CEF7 /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		4EE101B71E82B6B900598F4A /* AkiraTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AkiraTextField.swift; sourceTree = "<group>"; };
+		4EE101B81E82B6B900598F4A /* HoshiTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoshiTextField.swift; sourceTree = "<group>"; };
+		4EE101B91E82B6B900598F4A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4EE101BA1E82B6B900598F4A /* IsaoTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IsaoTextField.swift; sourceTree = "<group>"; };
+		4EE101BB1E82B6B900598F4A /* JiroTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JiroTextField.swift; sourceTree = "<group>"; };
+		4EE101BC1E82B6B900598F4A /* KaedeTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KaedeTextField.swift; sourceTree = "<group>"; };
+		4EE101BD1E82B6B900598F4A /* MadokaTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MadokaTextField.swift; sourceTree = "<group>"; };
+		4EE101BE1E82B6B900598F4A /* MinoruTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinoruTextField.swift; sourceTree = "<group>"; };
+		4EE101BF1E82B6B900598F4A /* TextFieldEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldEffects.h; sourceTree = "<group>"; };
+		4EE101C01E82B6B900598F4A /* TextFieldEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldEffects.swift; sourceTree = "<group>"; };
+		4EE101C11E82B6B900598F4A /* YokoTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YokoTextField.swift; sourceTree = "<group>"; };
+		4EE101C21E82B6B900598F4A /* YoshikoTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoshikoTextField.swift; sourceTree = "<group>"; };
+		8E41632D0C08A0E7392AD763 /* Pods-fitsoiOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fitsoiOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-fitsoiOS/Pods-fitsoiOS.debug.xcconfig"; sourceTree = "<group>"; };
+		953930E5B8077019B16B6EEA /* Pods_fitsoiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fitsoiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFCF24E227771EF86E57F75C /* Pods-fitsoiOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fitsoiOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-fitsoiOS/Pods-fitsoiOS.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4CA2F29682C458DC4464CEC /* Pods_fitsoiOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +82,8 @@
 			children = (
 				4E555FA31E8127D8008DAE2D /* fitsoiOS */,
 				4E555FA21E8127D8008DAE2D /* Products */,
+				F877403B94A0972A28435D8F /* Pods */,
+				C1259B2DA5CA7D331824EE81 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -63,8 +105,51 @@
 				4E555FB01E8127D8008DAE2D /* LaunchScreen.storyboard */,
 				4E555FB31E8127D8008DAE2D /* Info.plist */,
 				4E555FAB1E8127D8008DAE2D /* fitsoiOS.xcdatamodeld */,
+				4E6272981E827C8800090B77 /* ForgotPasswordVC.swift */,
+				4E6272991E827C8800090B77 /* GoogleService-Info.plist */,
+				4EC5D7B61E8555BF00C9CEF7 /* ProfileVC.swift */,
+				4E44D8261E851BFD007F2DA5 /* DashboardVC.swift */,
+				4E62729A1E827C8800090B77 /* LoginVC.swift */,
+				4E62729B1E827C8800090B77 /* RegisterVC.swift */,
 			);
 			path = fitsoiOS;
+			sourceTree = "<group>";
+		};
+		4EE101B61E82B6B900598F4A /* TextFieldEffects */ = {
+			isa = PBXGroup;
+			children = (
+				4EE101B71E82B6B900598F4A /* AkiraTextField.swift */,
+				4EE101B81E82B6B900598F4A /* HoshiTextField.swift */,
+				4EE101B91E82B6B900598F4A /* Info.plist */,
+				4EE101BA1E82B6B900598F4A /* IsaoTextField.swift */,
+				4EE101BB1E82B6B900598F4A /* JiroTextField.swift */,
+				4EE101BC1E82B6B900598F4A /* KaedeTextField.swift */,
+				4EE101BD1E82B6B900598F4A /* MadokaTextField.swift */,
+				4EE101BE1E82B6B900598F4A /* MinoruTextField.swift */,
+				4EE101BF1E82B6B900598F4A /* TextFieldEffects.h */,
+				4EE101C01E82B6B900598F4A /* TextFieldEffects.swift */,
+				4EE101C11E82B6B900598F4A /* YokoTextField.swift */,
+				4EE101C21E82B6B900598F4A /* YoshikoTextField.swift */,
+			);
+			path = TextFieldEffects;
+			sourceTree = "<group>";
+		};
+		C1259B2DA5CA7D331824EE81 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4EE101B61E82B6B900598F4A /* TextFieldEffects */,
+				953930E5B8077019B16B6EEA /* Pods_fitsoiOS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F877403B94A0972A28435D8F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8E41632D0C08A0E7392AD763 /* Pods-fitsoiOS.debug.xcconfig */,
+				BFCF24E227771EF86E57F75C /* Pods-fitsoiOS.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +159,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4E555FB61E8127D8008DAE2D /* Build configuration list for PBXNativeTarget "fitsoiOS" */;
 			buildPhases = (
+				D9A3BA9FCA3AF419F860F6E6 /* [CP] Check Pods Manifest.lock */,
 				4E555F9D1E8127D8008DAE2D /* Sources */,
 				4E555F9E1E8127D8008DAE2D /* Frameworks */,
 				4E555F9F1E8127D8008DAE2D /* Resources */,
+				A20A20BAE9B6D0143C745834 /* [CP] Embed Pods Frameworks */,
+				E138C34ED42F2654C4BF89FE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -128,21 +216,86 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E555FB21E8127D8008DAE2D /* LaunchScreen.storyboard in Resources */,
+				4E44D8251E851BC9007F2DA5 /* Main.storyboard in Resources */,
+				4E62729E1E827C8800090B77 /* GoogleService-Info.plist in Resources */,
 				4E555FAF1E8127D8008DAE2D /* Assets.xcassets in Resources */,
-				4E555FAA1E8127D8008DAE2D /* Main.storyboard in Resources */,
+				4EE101C51E82B6B900598F4A /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A20A20BAE9B6D0143C745834 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-fitsoiOS/Pods-fitsoiOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D9A3BA9FCA3AF419F860F6E6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E138C34ED42F2654C4BF89FE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-fitsoiOS/Pods-fitsoiOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4E555F9D1E8127D8008DAE2D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4EE101C41E82B6B900598F4A /* HoshiTextField.swift in Sources */,
+				4EE101C31E82B6B900598F4A /* AkiraTextField.swift in Sources */,
 				4E555FA71E8127D8008DAE2D /* ViewController.swift in Sources */,
+				4E62729F1E827C8800090B77 /* LoginVC.swift in Sources */,
+				4EE101C71E82B6B900598F4A /* JiroTextField.swift in Sources */,
+				4EE101C81E82B6B900598F4A /* KaedeTextField.swift in Sources */,
 				4E555FA51E8127D8008DAE2D /* AppDelegate.swift in Sources */,
+				4EE101C91E82B6B900598F4A /* MadokaTextField.swift in Sources */,
+				4EE101CC1E82B6B900598F4A /* YokoTextField.swift in Sources */,
+				4E6272A01E827C8800090B77 /* RegisterVC.swift in Sources */,
+				4EE101CD1E82B6B900598F4A /* YoshikoTextField.swift in Sources */,
 				4E555FAD1E8127D8008DAE2D /* fitsoiOS.xcdatamodeld in Sources */,
+				4EC5D7B71E8555BF00C9CEF7 /* ProfileVC.swift in Sources */,
+				4E44D8271E851BFD007F2DA5 /* DashboardVC.swift in Sources */,
+				4E62729D1E827C8800090B77 /* ForgotPasswordVC.swift in Sources */,
+				4EE101C61E82B6B900598F4A /* IsaoTextField.swift in Sources */,
+				4EE101CA1E82B6B900598F4A /* MinoruTextField.swift in Sources */,
+				4EE101CB1E82B6B900598F4A /* TextFieldEffects.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,27 +416,33 @@
 		};
 		4E555FB71E8127D8008DAE2D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8E41632D0C08A0E7392AD763 /* Pods-fitsoiOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = LN6Z5LQK8V;
 				INFOPLIST_FILE = fitsoiOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.garytate.fitsoiOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		4E555FB81E8127D8008DAE2D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BFCF24E227771EF86E57F75C /* Pods-fitsoiOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = LN6Z5LQK8V;
 				INFOPLIST_FILE = fitsoiOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.garytate.fitsoiOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -306,6 +465,7 @@
 				4E555FB81E8127D8008DAE2D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
