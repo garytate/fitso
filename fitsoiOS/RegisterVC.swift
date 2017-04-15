@@ -26,25 +26,37 @@ class RegisterVC: UIViewController {
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var nicknameField: AkiraTextField!
     @IBOutlet weak var ageField: AkiraTextField!
+    @IBOutlet weak var confirmpasswordField: AkiraTextField!
+    
+    @IBOutlet weak var errorLabel: UILabel!
     
     @IBAction func createAccount(_ sender: Any) {
-        if (emailField.text == "" || passwordField.text == "" || nicknameField.text == "" || ageField.text == "") {
-            print("error, you left a field blank.")
-        } else {
+        if (emailField.text == "" || passwordField.text == "" || confirmpasswordField.text == "" || nicknameField.text == "" || ageField.text == "") {
+            errorLabel.text = "You left a field blank."
+            errorLabel.isHidden = false
+        } else if (passwordField.text != confirmpasswordField.text) {
+            errorLabel.text = "Your passwords do not match."
+            errorLabel.isHidden = false
+        }
+        
+        else {
             FIRAuth.auth()?.createUser(withEmail: emailField.text!, password: passwordField.text!) { (user, error) in
                 if error == nil {
                     let userConstructor = ["nickname": self.nicknameField.text ?? "no nickname set",
-                                           "age": self.ageField.text ?? "0",
+                                           "age": self.ageField.text ?? "unknown age",
                                            "bronzeMedals": 0,
                                            "silverMedals": 0,
-                                           "goldMedals": 0] as [String : Any]
+                                           "goldMedals": 0,
+                                           "totalDistance": 0] as [String : Any]
                     let ref = FIRDatabase.database().reference()
                     ref.child("user").child(user!.uid).setValue(userConstructor)
+                    ref.child("exercises").setValue("pushups")
                     print("Account has been created.")
                     let vc = self.storyboard?.instantiateViewController(withIdentifier: "login")
                     self.present(vc!, animated: true, completion: nil)
                 } else {
-                    print("Error. \(error?.localizedDescription)")
+                    self.errorLabel.text = error?.localizedDescription
+                    self.errorLabel.isHidden = false
                 }
             }
         }

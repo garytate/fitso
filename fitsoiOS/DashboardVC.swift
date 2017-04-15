@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import FirebaseDatabase
 import MKRingProgressView
 import TextFieldEffects
 
@@ -16,6 +17,7 @@ class dashboardVC: UIViewController {
 
     
     @IBOutlet weak var objectiveLabel: UILabel!
+
     @IBOutlet weak var progressLabel: UILabel!
     
     @IBOutlet weak var ringProgress: MKRingProgressView!
@@ -31,6 +33,19 @@ class dashboardVC: UIViewController {
         
     }
     
+    @IBOutlet weak var numberProgress: UILabel!
+    
+    
+    func doesUserHavePersonalGoal() {
+        
+    }
+    
+    func setDailyProgressPercentage() -> Double {
+        var testValue:Double = 0.33
+        self.numberProgress.text = ("\(testValue*100)%")
+        return testValue
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -40,7 +55,7 @@ class dashboardVC: UIViewController {
     func drawRingProgress() {
         CATransaction.begin()
         CATransaction.setAnimationDuration(2.0)
-        ringProgress.progress = 0.74
+        ringProgress.progress = setDailyProgressPercentage()
         CATransaction.commit()
     }
 

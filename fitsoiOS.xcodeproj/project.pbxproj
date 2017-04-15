@@ -7,13 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E1D60D01E8A539B00C4533B /* ChallengesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1D60CF1E8A539B00C4533B /* ChallengesVC.swift */; };
+		4E3285851E8C4B920019894D /* DailyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3285841E8C4B920019894D /* DailyVC.swift */; };
+		4E3285871E8C52310019894D /* attempt.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E3285861E8C52310019894D /* attempt.storyboard */; };
 		4E44D8251E851BC9007F2DA5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E555FA81E8127D8008DAE2D /* Main.storyboard */; };
-		4E44D8271E851BFD007F2DA5 /* DashboardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E44D8261E851BFD007F2DA5 /* DashboardVC.swift */; };
 		4E555FA51E8127D8008DAE2D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E555FA41E8127D8008DAE2D /* AppDelegate.swift */; };
 		4E555FA71E8127D8008DAE2D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E555FA61E8127D8008DAE2D /* ViewController.swift */; };
 		4E555FAD1E8127D8008DAE2D /* fitsoiOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4E555FAB1E8127D8008DAE2D /* fitsoiOS.xcdatamodeld */; };
 		4E555FAF1E8127D8008DAE2D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E555FAE1E8127D8008DAE2D /* Assets.xcassets */; };
 		4E555FB21E8127D8008DAE2D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E555FB01E8127D8008DAE2D /* LaunchScreen.storyboard */; };
+		4E5CFC681E9BA26B00B2D503 /* DashboardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5CFC671E9BA26B00B2D503 /* DashboardVC.swift */; };
 		4E62729D1E827C8800090B77 /* ForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6272981E827C8800090B77 /* ForgotPasswordVC.swift */; };
 		4E62729E1E827C8800090B77 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E6272991E827C8800090B77 /* GoogleService-Info.plist */; };
 		4E62729F1E827C8800090B77 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E62729A1E827C8800090B77 /* LoginVC.swift */; };
@@ -34,7 +37,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4E44D8261E851BFD007F2DA5 /* DashboardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardVC.swift; sourceTree = "<group>"; };
+		4E1D60CF1E8A539B00C4533B /* ChallengesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengesVC.swift; sourceTree = "<group>"; };
+		4E3285841E8C4B920019894D /* DailyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyVC.swift; sourceTree = "<group>"; };
+		4E3285861E8C52310019894D /* attempt.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = attempt.storyboard; sourceTree = "<group>"; };
 		4E555FA11E8127D8008DAE2D /* fitsoiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fitsoiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E555FA41E8127D8008DAE2D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E555FA61E8127D8008DAE2D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -43,6 +48,7 @@
 		4E555FAE1E8127D8008DAE2D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4E555FB11E8127D8008DAE2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4E555FB31E8127D8008DAE2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4E5CFC671E9BA26B00B2D503 /* DashboardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardVC.swift; sourceTree = "<group>"; };
 		4E6272981E827C8800090B77 /* ForgotPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVC.swift; sourceTree = "<group>"; };
 		4E6272991E827C8800090B77 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4E62729A1E827C8800090B77 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -106,11 +112,14 @@
 				4E555FB31E8127D8008DAE2D /* Info.plist */,
 				4E555FAB1E8127D8008DAE2D /* fitsoiOS.xcdatamodeld */,
 				4E6272981E827C8800090B77 /* ForgotPasswordVC.swift */,
+				4E3285861E8C52310019894D /* attempt.storyboard */,
 				4E6272991E827C8800090B77 /* GoogleService-Info.plist */,
 				4EC5D7B61E8555BF00C9CEF7 /* ProfileVC.swift */,
-				4E44D8261E851BFD007F2DA5 /* DashboardVC.swift */,
+				4E3285841E8C4B920019894D /* DailyVC.swift */,
 				4E62729A1E827C8800090B77 /* LoginVC.swift */,
 				4E62729B1E827C8800090B77 /* RegisterVC.swift */,
+				4E1D60CF1E8A539B00C4533B /* ChallengesVC.swift */,
+				4E5CFC671E9BA26B00B2D503 /* DashboardVC.swift */,
 			);
 			path = fitsoiOS;
 			sourceTree = "<group>";
@@ -217,6 +226,7 @@
 			files = (
 				4E555FB21E8127D8008DAE2D /* LaunchScreen.storyboard in Resources */,
 				4E44D8251E851BC9007F2DA5 /* Main.storyboard in Resources */,
+				4E3285871E8C52310019894D /* attempt.storyboard in Resources */,
 				4E62729E1E827C8800090B77 /* GoogleService-Info.plist in Resources */,
 				4E555FAF1E8127D8008DAE2D /* Assets.xcassets in Resources */,
 				4EE101C51E82B6B900598F4A /* Info.plist in Resources */,
@@ -279,6 +289,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4EE101C41E82B6B900598F4A /* HoshiTextField.swift in Sources */,
+				4E5CFC681E9BA26B00B2D503 /* DashboardVC.swift in Sources */,
 				4EE101C31E82B6B900598F4A /* AkiraTextField.swift in Sources */,
 				4E555FA71E8127D8008DAE2D /* ViewController.swift in Sources */,
 				4E62729F1E827C8800090B77 /* LoginVC.swift in Sources */,
@@ -286,12 +297,13 @@
 				4EE101C81E82B6B900598F4A /* KaedeTextField.swift in Sources */,
 				4E555FA51E8127D8008DAE2D /* AppDelegate.swift in Sources */,
 				4EE101C91E82B6B900598F4A /* MadokaTextField.swift in Sources */,
+				4E3285851E8C4B920019894D /* DailyVC.swift in Sources */,
 				4EE101CC1E82B6B900598F4A /* YokoTextField.swift in Sources */,
 				4E6272A01E827C8800090B77 /* RegisterVC.swift in Sources */,
 				4EE101CD1E82B6B900598F4A /* YoshikoTextField.swift in Sources */,
 				4E555FAD1E8127D8008DAE2D /* fitsoiOS.xcdatamodeld in Sources */,
+				4E1D60D01E8A539B00C4533B /* ChallengesVC.swift in Sources */,
 				4EC5D7B71E8555BF00C9CEF7 /* ProfileVC.swift in Sources */,
-				4E44D8271E851BFD007F2DA5 /* DashboardVC.swift in Sources */,
 				4E62729D1E827C8800090B77 /* ForgotPasswordVC.swift in Sources */,
 				4EE101C61E82B6B900598F4A /* IsaoTextField.swift in Sources */,
 				4EE101CA1E82B6B900598F4A /* MinoruTextField.swift in Sources */,
