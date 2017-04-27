@@ -16,12 +16,138 @@ class DailyVC: UIViewController {
     var situpNumberVule: Int = 0
     var pressupNumberVule: Int = 0
     var starjumpNumberVule: Int = 0
-    
+    var lastDate: String!
+    var catchGetDateError: Bool = false
+    var medalsInArray: NSArray = []
     @IBOutlet weak var pressupValue: UILabel!
     @IBOutlet weak var starjumpValue: UILabel!
     
+    func getCurrentMedals() {
+        var ref: FIRDatabaseReference!
+        ref = FIRDatabase.database().reference()
+        let userID = FIRAuth.auth()?.currentUser?.uid
+        ref.child("user").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let value = snapshot.value as? NSDictionary
+            let username = value?["nickname"] as? String ?? "cool"
+            let gold = value?["goldMedals"] as? Int ?? -1
+            let silver = value?["silverMedals"] as? Int ?? -1
+            let bronze = value?["bronzeMedals"] as? Int ?? -1
+            let total = value?["totalDistance"] as? Int ?? -1
+            self.medalsInArray = [bronze, silver, gold]
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+        return self.medalsInArray
+    }
+    
     func checkIfNewDay() -> Bool {
-        return true 
+        let currDate = getCurrentDate()
+        var ref: FIRDatabaseReference!
+        ref = FIRDatabase.database().reference()
+        let userID = FIRAuth.auth()?.currentUser?.uid
+        ref.child("user").child(userID!).child("dates").observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let value = snapshot.value as? NSDictionary
+            let situp:Int = value?["lastSaveDate"] as? String ?? "Date Invalid"
+            if situp != "Date Invalid" {
+                self.lastDate = situp
+            } else {
+                print("Error, date not able to be recieved from the database")
+                self.catchGetDateError = true
+                saveCurrentDate(currDate)
+            }
+        })
+        if (!self.catchGetDateError) {
+            if (self.lastDate == self.currDate) {
+                print("Day has not moved on.")
+                return false
+            } else {
+                print("Day has moved on!")
+                return true
+            }
+        }
+        return true
+    }
+    
+    func giveMedalsAndSetScoresToZero() {
+        
+        var giveBronzeQuantity: Int = 0
+        var giveSilverQuantity: Int = 0
+        var giveGoldQuantity: Int = 0
+        
+        //Check the amount of situps
+        if (25 <= self.situpNumberVule < 50) {
+            giveBronzeQuantity += 1
+        } else if (50 <= self.situpNumberVule < 75) {
+            giveSilverQuantity += 1
+        } else if (75 <= self.situpNumberVule <= 100) {
+            giveGoldQuantity += 1
+        } else {
+            print("score too low to give a medal.")
+        }
+        
+        //Check the amount of pressups
+        if (25 <= self.pressupNumberVule < 50) {
+            giveBronzeQuantity += 1
+        } else if (50 <= self.pressupNumberVule < 75) {
+            giveSilverQuantity += 1
+        } else if (75 <= self.pressupNumberVule <= 100) {
+            giveGoldQuantity += 1
+        } else {
+            print("score too low to give a medal.")
+        }
+        
+        //Check the amount of star jumps
+        if (25 <= self.starjumpNumberVule < 50) {
+            giveBronzeQuantity += 1
+        } else if (50 <= self.starjumpNumberVule < 75) {
+            giveSilverQuantity += 1
+        } else if (75 <= self.starjumpNumberVule <= 100) {
+            giveGoldQuantity += 1
+        } else {
+            print("score too low to give a medal.")
+        }
+        
+        let currentAmounts = getCurrentMedals()
+        var newBronzeAmounts: Int = currentAmounts[0] + giveBronzeQuantity
+        var newSilverAmounts: Int = currentAmounts[1] + giveSilverQuantity
+        var newGoldAmounts: Int = currentAmounts[2] + giveGoldQuantity
+        
+        var ref: FIRDatabaseReference!
+        ref = FIRDatabase.database().reference()
+        let user = FIRAuth.auth()!.currentUser!.uid
+        let key = ref.child("user").child(user).child("dates")
+        ref.child("user/\(user)/bronzeMedals").setValue(newBronzeAmounts)
+        ref.child("user/\(user)/silverMedals").setValue(newSilverAmounts)
+        ref.child("user/\(user)/goldMedals").setValue(newGoldAmounts)
+        
+        //sets to zero
+        self.situpNumberVule = 0
+        self.pressupNumberVule = 0
+        self.starjumpNumberVule = 0
+        
+    }
+    
+    func saveCurrentData(String: currentDate) {
+        var ref: FIRDatabaseReference!
+        ref = FIRDatabase.database().reference()
+        let user = FIRAuth.auth()!.currentUser!.uid
+        let key = ref.child("user").child(user).child("dates")
+        ref.child("user/\(user)/dates/lastSaveDate").setValue(currentDate)
+    }
+    
+    func getCurrentDate() -> String {
+        let date = Date()
+        let calendar = Calendar.current
+        let year = calendar.component(.year, from: date)
+        let month = calendar.component(.month, from: date)
+        let day = calendar.component (.day, from: date)
+        
+        let newDate:String = ("\(day)/\(month)/\(year)")
+        
+        return newDate
     }
     
     //Addition and Minus Buttons Outlets
