@@ -337,6 +337,9 @@
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gt2-aP-XFI">
                                                         <rect key="frame" x="0.0" y="0.0" width="22" height="22.000000000000014"/>
+                                                        <connections>
+                                                            <action selector="pressupMinusValue:" destination="bND-ba-S9c" eventType="touchUpInside" id="9Lz-Dc-TCZ"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="0 / 100" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L37-Rl-FHO">
                                                         <rect key="frame" x="45" y="0.0" width="53" height="22.000000000000014"/>

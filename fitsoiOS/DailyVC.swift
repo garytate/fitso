@@ -19,6 +19,7 @@ class DailyVC: UIViewController {
     var lastDate: String!
     var catchGetDateError: Bool = false
     var medalsInArray: NSArray = []
+    var bruteforceDate: Bool = false
     @IBOutlet weak var pressupValue: UILabel!
     @IBOutlet weak var starjumpValue: UILabel!
     
@@ -268,19 +269,32 @@ class DailyVC: UIViewController {
     
     //Functions
     @IBAction func situpPlusValue(_ sender: Any) {
-        self.situpNumberVule += 1
-        self.situpValue.text = ("\(situpNumberVule) / 100")
+        if (self.situpNumberVule < 100) {
+            self.situpNumberVule += 1
+            self.situpValue.text = ("\(situpNumberVule) / 100")
+        }
     }
     
     @IBAction func situpMinusValue(_ sender: Any) {
-        self.situpNumberVule -= 1
-        self.situpValue.text = ("\(situpNumberVule) / 100")
+        if (self.situpNumberVule > 0) {
+            self.situpNumberVule -= 1
+            self.situpValue.text = ("\(situpNumberVule) / 100")
+        }
+        
     }
     
     @IBAction func pressupPlusValue(_ sender: Any) {
-        self.pressupNumberVule += 1
+        if (self.pressupNumberVule < 100) {
+            self.pressupNumberVule += 1
+            self.pressupValue.text = ("\(self.pressupNumberVule) / 100")
+        }
+    }
+    
+    @IBAction func pressupMinusValue(_ sender: Any) {
+        self.pressupNumberVule -= 1
         self.pressupValue.text = ("\(self.pressupNumberVule) / 100")
     }
+    
     @IBAction func situpKeyboard(_ sender: Any) {
         let alertController = UIAlertController(title: "Value", message: "Please enter your amount of sit ups", preferredStyle: .alert)
         
