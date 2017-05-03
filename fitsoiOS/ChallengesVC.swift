@@ -13,7 +13,7 @@ class ChallengesVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // Would code if I had more time, skip for now.
     }
 
 }
