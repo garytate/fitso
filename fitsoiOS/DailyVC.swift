@@ -13,26 +13,36 @@ import FirebaseDatabase
 class DailyVC: UIViewController {
     
     var currentState:Bool = true
-    var situpNumberVule: Int = 0
-    var pressupNumberVule: Int = 0
-    var starjumpNumberVule: Int = 0
-    var lastDate: String!
-    var catchGetDateError: Bool = false
-    var medalsInArray: NSArray = []
-    var bruteforceDate: Bool = false
-    var bronzeYAH: Int = 0
-    var silverYAH: Int = 0
-    var goldYAH: Int = 0
-    var currDate: String = ""
-    var newLastDate: String = "1/1/1970"
-    var currentDate: String = ""
+    var situpNumberVule: Int = 0 //Number of situps to display on the screen
+    var pressupNumberVule: Int = 0 //Number of pressups to display on the screen
+    var starjumpNumberVule: Int = 0 //Number of starjumps to display on the screen
+    var lastDate: String! //unused
+    var catchGetDateError: Bool = false //catch any errors so that it'll show error
+    var medalsInArray: NSArray = [] //Would hold the three medals in an array
+    var bruteforceDate: Bool = false //Used to change the date to test
+    var bronzeYAH: Int = 0 //Used for adding to the bronze total - YAH is a personal term
+    var silverYAH: Int = 0 //Used for adding to the silver total
+    var goldYAH: Int = 0 //Used for adding to the gold medal total
+    var currDate: String = "" //Getting the current date
+    var newLastDate: String = "1/1/1970" //Getting the last date that someone used the application
+    var currentDate: String = "" //Also getting the current date
+    
+    //Connect the text labels on the UI to the code, can be called by names.
     @IBOutlet weak var pressupValue: UILabel!
     @IBOutlet weak var starjumpValue: UILabel!
     
+    
     func getCurrentMedals() {
-        var ref: FIRDatabaseReference!
-        ref = FIRDatabase.database().reference()
-        let userID = FIRAuth.auth()?.currentUser?.uid
+        /*
+        This function is used to connect to the online database
+        check into the child nodes - then into the user's specific note
+        collect the information into an NSDictionary (dictionary) and
+        used to set the variables to the values that are inside the dictionary
+        */
+        
+        var ref: FIRDatabaseReference! //get a reference
+        ref = FIRDatabase.database().reference() //set the reference
+        let userID = FIRAuth.auth()?.currentUser?.uid //get the user's ID
         ref.child("user").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             let value = snapshot.value as? NSDictionary
@@ -41,16 +51,23 @@ class DailyVC: UIViewController {
             let silver = value?["silverMedals"] as? Int ?? -1
             let bronze = value?["bronzeMedals"] as? Int ?? -1
             let total = value?["totalDistance"] as? Int ?? -1
+            //set the gathered data to variables
             self.bronzeYAH = bronze
             self.silverYAH = silver
             self.goldYAH = gold
             
         }) { (error) in
+            //if an error is detected, print it to the console - when using the app this will never show
             print(error.localizedDescription)
         }
     }
     
     func checkIfNewDay(completion: @escaping (_ isNew: Bool) -> Void) {
+        /*
+        This function is used to compare the current date to the last
+        one which is saved into the database - this is used to be able
+        to check if it is a new day so that the daily can reset if so
+        */
         print(self.currDate)
         var ref: FIRDatabaseReference!
         ref = FIRDatabase.database().reference()
@@ -63,7 +80,7 @@ class DailyVC: UIViewController {
             print("just to make sure its going inside the function.  Delete after")
             self.lastDate = value?["lastSaveDate"] as? String ?? "Date Invalid"
             self.newLastDate = String(self.lastDate)
-            if self.newLastDate != "Date Invalid" {
+            if self.newLastDate != "Date Invalid" { //This is used to be able to test if there is a valid date
                 print(self.lastDate)
                 if (self.newLastDate == self.currentDate) {
                     print("Day has not moved on.")
@@ -72,7 +89,7 @@ class DailyVC: UIViewController {
                     print("Day has moved on!")
                     completion(true)
                 }
-            } else {
+            } else { //If there is an error, set the current data to the database
                 print("Error, date not able to be recieved from the database")
                 self.catchGetDateError = true
                 self.saveCurrentDate()
@@ -82,20 +99,24 @@ class DailyVC: UIViewController {
     }
     
     func giveMedalsAndSetScoresToZero() {
-        
+        /*
+        Set the scores to zero and give the appropriate score
+        to the database so that they add to the totals, and the
+        scores are reset to begin the next day - should only run when compleition is true
+        */
         var giveBronzeQuantity: Int = 0
         var giveSilverQuantity: Int = 0
         var giveGoldQuantity: Int = 0
         
         //Check the amount of situps
         print(self.situpNumberVule)
-        if (self.situpNumberVule >= 25) && (self.situpNumberVule < 50) {
+        if (self.situpNumberVule >= 25) && (self.situpNumberVule < 50) { // if between 25 .. 50
             giveBronzeQuantity += 1
-        } else if (self.situpNumberVule >= 50) && (self.situpNumberVule < 75) {
-            giveSilverQuantity += 1
-        } else if (self.situpNumberVule >= 75) && (self.situpNumberVule <= 100) {
+        } else if (self.situpNumberVule >= 50) && (self.situpNumberVule < 75) { // if between 50 .. 75
+            giveSilverQuantity += 1 
+        } else if (self.situpNumberVule >= 75) && (self.situpNumberVule <= 100) {// if between 75 .. 100
             giveGoldQuantity += 1
-        } else {
+        } else { // if between 0 .. 25
             print("score too low to give a medal.")
         }
         
@@ -127,7 +148,7 @@ class DailyVC: UIViewController {
         print("Bronze: \(self.bronzeYAH)")
         print(giveBronzeQuantity)
         var newBronzeAmounts: Int = self.bronzeYAH + giveBronzeQuantity
-        var newSilverAmounts: Int = self.silverYAH + giveSilverQuantity
+        var newSilverAmounts: Int = self.silverYAH + giveSilverQuantity // add the current medals + new medals
         var newGoldAmounts: Int = self.goldYAH + giveGoldQuantity
         print("Here are the new value:\n__\(newBronzeAmounts)")
         var ref: FIRDatabaseReference!
@@ -135,32 +156,34 @@ class DailyVC: UIViewController {
         let user = FIRAuth.auth()!.currentUser!.uid
         let key = ref.child("user").child(user).child("dates")
         ref.child("user/\(user)/bronzeMedals").setValue(newBronzeAmounts)
-        ref.child("user/\(user)/silverMedals").setValue(newSilverAmounts)
+        ref.child("user/\(user)/silverMedals").setValue(newSilverAmounts) // put the new scores into the database
         ref.child("user/\(user)/goldMedals").setValue(newGoldAmounts)
         
         //sets to zero
-        resetExercisesToZero()
+        resetExercisesToZero() // set everything to zero
         
     }
     
     @IBOutlet weak var fakeNextDay: UIButton!
     @IBAction func fakeNextDayButton(_ sender: Any) {
+        /*
+        This function is used for testing purposes
+        it changes the database date so that when it reloads,
+        it will see it as a new day and do things as if a new
+        day had come around
+        */
         var ref: FIRDatabaseReference!
         ref = FIRDatabase.database().reference()
         let user = FIRAuth.auth()!.currentUser!.uid
         ref.child("user/\(user)/dates/lastSaveDate").setValue("1/1/1970")
         savedChangesText.text = "Next Day Fake"
-    }
-    
-    
-    
-    func resetToZero() {
-        
-    }
-    
-    
+    } 
     
     func saveCurrentDate() {
+        /*
+        Saves the current date to the database so that if the user returns
+        they will not constantly be seen as a new day user
+        */
         var ref: FIRDatabaseReference!
         ref = FIRDatabase.database().reference()
         let user = FIRAuth.auth()!.currentUser!.uid
@@ -169,6 +192,10 @@ class DailyVC: UIViewController {
     }
     
     func resetExercisesToZero() {
+        /*
+        sets the scores to zero on the screen then
+        runs the function which pushes them to the screen
+        */
         var ref: FIRDatabaseReference!
         ref = FIRDatabase.database().reference()
         let user = FIRAuth.auth()!.currentUser!.uid
@@ -180,6 +207,10 @@ class DailyVC: UIViewController {
     }
     
     func getCurrentDate() -> String {
+        /*
+        Returns the current date as a string
+        in the format "dd/mm/yyyy"
+        */
         let date = Date()
         let calendar = Calendar.current
         let year = calendar.component(.year, from: date)
@@ -233,7 +264,7 @@ class DailyVC: UIViewController {
         
     }
     
-    func enableTheButtons() {
+    func enableTheButtons() { //enable all six of the buttons
         self.situpAddition.isEnabled = true
         self.situpMinus.isEnabled = true
         self.pressupAddition.isEnabled = true
@@ -242,7 +273,7 @@ class DailyVC: UIViewController {
         self.starjumpMinus.isEnabled = true
     }
     
-    func disableTheButtons() {
+    func disableTheButtons() { //disable all six of the buttons
         self.situpAddition.isEnabled = false
         self.situpMinus.isEnabled = false
         self.pressupAddition.isEnabled = false
@@ -267,6 +298,11 @@ class DailyVC: UIViewController {
     }
     
     func getSitUpValue() {
+        /*
+        Gets the three current scores from the database
+        and sets them into variables which can be used
+        and also sets the labels to the current variables
+        */
         var ref: FIRDatabaseReference!
         ref = FIRDatabase.database().reference()
         let userID = FIRAuth.auth()?.currentUser?.uid
@@ -290,7 +326,9 @@ class DailyVC: UIViewController {
     
     @IBAction func saveButton(_ sender: Any) {
         //var changesWereASuccess = false
-        
+        /*
+        Saves the current values to the database
+        */
         var ref: FIRDatabaseReference!
         ref = FIRDatabase.database().reference()
         let user = FIRAuth.auth()!.currentUser!.uid
@@ -352,45 +390,13 @@ class DailyVC: UIViewController {
         }
     }
     
-    @IBAction func updateDay(_ sender: Any) {
+    @IBAction func updateDay(_ sender: Any) { //when the update button is pressed, run this
         saveCurrentDate()
     }
-    
-    
-    
-    @IBAction func situpKeyboard(_ sender: Any) {
-        let alertController = UIAlertController(title: "Value", message: "Please enter your amount of sit ups", preferredStyle: .alert)
-        
-        let confirmAction = UIAlertAction(title: "Confirm", style: .default) { (_) in
-            if let field = alertController.textFields?[0] {
-                let numberInString: String = String(describing: alertController.textFields?[0])
-                let numberInputted: Int = Int(numberInString)!
-                print(numberInputted)
-                // store your data
-                UserDefaults.standard.set(field.text, forKey: "userEmail")
-                UserDefaults.standard.synchronize()
-                
-            } else {
-                // user did not fill field
-            }
-        }
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
-        
-        alertController.addTextField { (textField) in
-            textField.keyboardType = .decimalPad
-            textField.placeholder = "Enter your number."
-        }
-        
-        alertController.addAction(confirmAction)
-        alertController.addAction(cancelAction)
-        
-        self.present(alertController, animated: true, completion: nil)
-    }
-    
-    
+
 
     override func viewDidAppear(_ animated: Bool) {
+        //when the screen first appears, run this function line by line
         
         getSitUpValue()
         getCurrentMedals()
