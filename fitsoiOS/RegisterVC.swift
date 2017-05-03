@@ -31,6 +31,12 @@ class RegisterVC: UIViewController {
     @IBOutlet weak var errorLabel: UILabel!
     
     @IBAction func createAccount(_ sender: Any) {
+        /*
+        This is a really badly written function which pulls in all of the text field information
+        and creates a user with the information that was given - a randomly selected ID is given
+        to the user which can be used to call information from them later, they are then sent
+        back to the login screen
+        */
         if (emailField.text == "" || passwordField.text == "" || confirmpasswordField.text == "" || nicknameField.text == "" || ageField.text == "") {
             errorLabel.text = "You left a field blank."
             errorLabel.isHidden = false
