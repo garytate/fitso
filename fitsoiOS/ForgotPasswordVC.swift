@@ -20,12 +20,18 @@ class ForgotPasswordVC: UIViewController {
 
     @IBOutlet weak var emailField: UITextField!
     @IBAction func forgotButton(_ sender: Any) {
+        /*
+        This is a built in function to the Firebase framework
+        which allows me to pull an email as a parameter
+        and the framework will send the user a password reset email
+        */
         FIRAuth.auth()?.sendPasswordReset(withEmail: emailField.text!) { error in
             print("Password reset has been sent.")
         }
     }
     
     @IBAction func pressLogin(_ sender: UIButton) {
+        //Sends the user back to the login screen
         performSegue(withIdentifier: "segueLoginFromForgot", sender: self)
     }
 
