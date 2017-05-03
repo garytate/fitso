@@ -28,27 +28,9 @@ class ProfileVC: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         /*
-        let ref = FIRDatabase.database().reference()
-        let UserID = FIRAuth.auth()?.currentUser?.uid
-        ref.child("user").child(UserID!).observeSingleEvent(of: .value, with: { (snapshot) in
-            let value = snapshot.value as? NSDictionary
-            let displayname = value?["nickname"] as? String ?? "Nickname Missing"
-            let bronzeMedals = value?["bronzeMedals"] as? String ?? "no bronze in db"
-            let silverMedals = value?["silverMedals"] as? String ?? "no silver in db"
-            let goldMedals = value?["goldMedals"] as? String ?? "no gold in db"
-            let totalDistance = value?["totalDistance"] as? String ?? "no total in db"
-            
-            print(bronzeMedals, silverMedals, goldMedals)
-
-            self.displaynameLabel.text = ("Username: \(displayname)")
-            self.goldmedalsLabel.text = ("Gold medals: \(goldMedals)")
-            self.silvermedalsLabel.text = ("Silver medals: \(silverMedals)")
-            self.bronzemedalsLabel.text = ("Bronze medals: \(bronzeMedals)")
-            self.totaldistanceLabel.text = ("Total distance: \(totalDistance)")
-        })
+        Pulls the data from the online databse and displays it
+        in the empty slots to show the user how they are doing
         */
-        
-        
         var ref: FIRDatabaseReference!
         ref = FIRDatabase.database().reference()
         let userID = FIRAuth.auth()?.currentUser?.uid
