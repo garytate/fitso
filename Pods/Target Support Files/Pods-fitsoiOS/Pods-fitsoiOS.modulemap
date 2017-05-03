@@ -1,0 +1,6 @@
+framework module Pods_fitsoiOS {
+  umbrella header "Pods-fitsoiOS-umbrella.h"
+
+  export *
+  module * { export * }
+}

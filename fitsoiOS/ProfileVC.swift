@@ -59,7 +59,7 @@ class ProfileVC: UIViewController {
             let gold = value?["goldMedals"] as? Int ?? -1
             let silver = value?["silverMedals"] as? Int ?? -1
             let bronze = value?["bronzeMedals"] as? Int ?? -1
-            let total = value?["totalDistance"] as? Int ?? -1
+            let total = (bronze + silver + gold)
             // ...
             
             self.displaynameLabel.text = ("USERNAME: \(username)")

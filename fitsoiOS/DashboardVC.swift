@@ -15,6 +15,9 @@ import TextFieldEffects
 
 class dashboardVC: UIViewController {
 
+    var situpNumberVule: Int = 0
+    var pressupNumberVule: Int = 0
+    var starjumpNumberVule: Int = 0
     
     @IBOutlet weak var objectiveLabel: UILabel!
 
@@ -41,9 +44,26 @@ class dashboardVC: UIViewController {
     }
     
     func setDailyProgressPercentage() -> Double {
-        var testValue:Double = 0.33
-        self.numberProgress.text = ("\(testValue*100)%")
-        return testValue
+        var testValue:Int = 0
+        var ref: FIRDatabaseReference!
+        ref = FIRDatabase.database().reference()
+        let userID = FIRAuth.auth()?.currentUser?.uid
+        ref.child("user").child(userID!).child("daily").observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let value = snapshot.value as? NSDictionary
+            let situp:Int = value?["situp"] as? Int ?? 0
+            let pressup:Int = value?["pressup"] as? Int ?? 0
+            let starjumps:Int = value?["starjump"] as? Int ?? 0
+            self.situpNumberVule = situp
+            self.pressupNumberVule = pressup
+            self.starjumpNumberVule = starjumps
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+        let mathNumber: Int = ((self.situpNumberVule + self.pressupNumberVule + self.starjumpNumberVule) / 3)
+        
+        self.numberProgress.text = ("\(mathNumber)%")
+        return Double(mathNumber / 10)
     }
     
     override func viewDidLoad() {

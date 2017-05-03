@@ -20,6 +20,12 @@ class DailyVC: UIViewController {
     var catchGetDateError: Bool = false
     var medalsInArray: NSArray = []
     var bruteforceDate: Bool = false
+    var bronzeYAH: Int = 0
+    var silverYAH: Int = 0
+    var goldYAH: Int = 0
+    var currDate: String = ""
+    var newLastDate: String = "1/1/1970"
+    var currentDate: String = ""
     @IBOutlet weak var pressupValue: UILabel!
     @IBOutlet weak var starjumpValue: UILabel!
     
@@ -35,41 +41,44 @@ class DailyVC: UIViewController {
             let silver = value?["silverMedals"] as? Int ?? -1
             let bronze = value?["bronzeMedals"] as? Int ?? -1
             let total = value?["totalDistance"] as? Int ?? -1
-            self.medalsInArray = [bronze, silver, gold]
+            self.bronzeYAH = bronze
+            self.silverYAH = silver
+            self.goldYAH = gold
             
         }) { (error) in
             print(error.localizedDescription)
         }
-        return self.medalsInArray
     }
     
-    func checkIfNewDay() -> Bool {
-        let currDate = getCurrentDate()
+    func checkIfNewDay(completion: @escaping (_ isNew: Bool) -> Void) {
+        print(self.currDate)
         var ref: FIRDatabaseReference!
         ref = FIRDatabase.database().reference()
         let userID = FIRAuth.auth()?.currentUser?.uid
+        print("outside function")
         ref.child("user").child(userID!).child("dates").observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
+            print("inside function")
             let value = snapshot.value as? NSDictionary
-            let situp:Int = value?["lastSaveDate"] as? String ?? "Date Invalid"
-            if situp != "Date Invalid" {
-                self.lastDate = situp
+            print("just to make sure its going inside the function.  Delete after")
+            self.lastDate = value?["lastSaveDate"] as? String ?? "Date Invalid"
+            self.newLastDate = String(self.lastDate)
+            if self.newLastDate != "Date Invalid" {
+                print(self.lastDate)
+                if (self.newLastDate == self.currentDate) {
+                    print("Day has not moved on.")
+                    completion(false)
+                } else {
+                    print("Day has moved on!")
+                    completion(true)
+                }
             } else {
                 print("Error, date not able to be recieved from the database")
                 self.catchGetDateError = true
-                saveCurrentDate(currDate)
+                self.saveCurrentDate()
+                completion(false)
             }
         })
-        if (!self.catchGetDateError) {
-            if (self.lastDate == self.currDate) {
-                print("Day has not moved on.")
-                return false
-            } else {
-                print("Day has moved on!")
-                return true
-            }
-        }
-        return true
     }
     
     func giveMedalsAndSetScoresToZero() {
@@ -79,43 +88,48 @@ class DailyVC: UIViewController {
         var giveGoldQuantity: Int = 0
         
         //Check the amount of situps
-        if (25 <= self.situpNumberVule < 50) {
+        print(self.situpNumberVule)
+        if (self.situpNumberVule >= 25) && (self.situpNumberVule < 50) {
             giveBronzeQuantity += 1
-        } else if (50 <= self.situpNumberVule < 75) {
+        } else if (self.situpNumberVule >= 50) && (self.situpNumberVule < 75) {
             giveSilverQuantity += 1
-        } else if (75 <= self.situpNumberVule <= 100) {
+        } else if (self.situpNumberVule >= 75) && (self.situpNumberVule <= 100) {
             giveGoldQuantity += 1
         } else {
             print("score too low to give a medal.")
         }
         
         //Check the amount of pressups
-        if (25 <= self.pressupNumberVule < 50) {
+        if (self.pressupNumberVule >= 25) && (self.pressupNumberVule < 50) {
             giveBronzeQuantity += 1
-        } else if (50 <= self.pressupNumberVule < 75) {
+        } else if (self.pressupNumberVule >= 50) && (self.pressupNumberVule < 75) {
             giveSilverQuantity += 1
-        } else if (75 <= self.pressupNumberVule <= 100) {
+        } else if (self.pressupNumberVule >= 75) && (self.pressupNumberVule <= 100) {
             giveGoldQuantity += 1
         } else {
             print("score too low to give a medal.")
         }
         
         //Check the amount of star jumps
-        if (25 <= self.starjumpNumberVule < 50) {
+        if (self.starjumpNumberVule >= 25) && (self.starjumpNumberVule < 50) {
             giveBronzeQuantity += 1
-        } else if (50 <= self.starjumpNumberVule < 75) {
+        } else if (self.starjumpNumberVule >= 50) && (self.starjumpNumberVule < 75) {
             giveSilverQuantity += 1
-        } else if (75 <= self.starjumpNumberVule <= 100) {
+        } else if (self.starjumpNumberVule >= 75) && (self.starjumpNumberVule <= 100) {
             giveGoldQuantity += 1
         } else {
             print("score too low to give a medal.")
         }
         
-        let currentAmounts = getCurrentMedals()
-        var newBronzeAmounts: Int = currentAmounts[0] + giveBronzeQuantity
-        var newSilverAmounts: Int = currentAmounts[1] + giveSilverQuantity
-        var newGoldAmounts: Int = currentAmounts[2] + giveGoldQuantity
+        savedChangesText.text = "Please press Update Day"
         
+        let currentAmounts = getCurrentMedals()
+        print("Bronze: \(self.bronzeYAH)")
+        print(giveBronzeQuantity)
+        var newBronzeAmounts: Int = self.bronzeYAH + giveBronzeQuantity
+        var newSilverAmounts: Int = self.silverYAH + giveSilverQuantity
+        var newGoldAmounts: Int = self.goldYAH + giveGoldQuantity
+        print("Here are the new value:\n__\(newBronzeAmounts)")
         var ref: FIRDatabaseReference!
         ref = FIRDatabase.database().reference()
         let user = FIRAuth.auth()!.currentUser!.uid
@@ -125,18 +139,44 @@ class DailyVC: UIViewController {
         ref.child("user/\(user)/goldMedals").setValue(newGoldAmounts)
         
         //sets to zero
-        self.situpNumberVule = 0
-        self.pressupNumberVule = 0
-        self.starjumpNumberVule = 0
+        resetExercisesToZero()
         
     }
     
-    func saveCurrentData(String: currentDate) {
+    @IBOutlet weak var fakeNextDay: UIButton!
+    @IBAction func fakeNextDayButton(_ sender: Any) {
         var ref: FIRDatabaseReference!
         ref = FIRDatabase.database().reference()
         let user = FIRAuth.auth()!.currentUser!.uid
-        let key = ref.child("user").child(user).child("dates")
-        ref.child("user/\(user)/dates/lastSaveDate").setValue(currentDate)
+        ref.child("user/\(user)/dates/lastSaveDate").setValue("1/1/1970")
+        savedChangesText.text = "Next Day Fake"
+    }
+    
+    
+    
+    func resetToZero() {
+        
+    }
+    
+    
+    
+    func saveCurrentDate() {
+        var ref: FIRDatabaseReference!
+        ref = FIRDatabase.database().reference()
+        let user = FIRAuth.auth()!.currentUser!.uid
+        print(getCurrentDate())
+        ref.child("user/\(user)/dates/lastSaveDate").setValue(getCurrentDate())
+    }
+    
+    func resetExercisesToZero() {
+        var ref: FIRDatabaseReference!
+        ref = FIRDatabase.database().reference()
+        let user = FIRAuth.auth()!.currentUser!.uid
+        print("Resetting the exercises to zero.")
+        ref.child("user/\(user)/daily/pressup").setValue(0)
+        ref.child("user/\(user)/daily/situp").setValue(0)
+        ref.child("user/\(user)/daily/starjump").setValue(0)
+        getSitUpValue() //make everything load again.
     }
     
     func getCurrentDate() -> String {
@@ -172,7 +212,7 @@ class DailyVC: UIViewController {
             print ("Error signing out: %@", signOutError)
         }
         
-        performSegue(withIdentifier: "segueLoginFromDaily", sender: self)
+        performSegue(withIdentifier: "ShowLoginFromDaily", sender: self)
         
 
     }
@@ -291,9 +331,32 @@ class DailyVC: UIViewController {
     }
     
     @IBAction func pressupMinusValue(_ sender: Any) {
-        self.pressupNumberVule -= 1
-        self.pressupValue.text = ("\(self.pressupNumberVule) / 100")
+        if (self.pressupNumberVule > 0) {
+            self.pressupNumberVule -= 1
+            self.pressupValue.text = ("\(self.pressupNumberVule) / 100")
+
+        }
     }
+    
+    @IBAction func starjumpPlusValue(_ sender: Any) {
+        if (self.starjumpNumberVule < 100) {
+            self.starjumpNumberVule += 1
+            self.starjumpValue.text = ("\(self.starjumpNumberVule) / 100")
+        }
+    }
+    
+    @IBAction func starjumpMinusValue(_ sender: Any) {
+        if (self.starjumpNumberVule > 0) {
+            self.starjumpNumberVule -= 1
+            self.starjumpValue.text = ("\(self.starjumpNumberVule) / 100")
+        }
+    }
+    
+    @IBAction func updateDay(_ sender: Any) {
+        saveCurrentDate()
+    }
+    
+    
     
     @IBAction func situpKeyboard(_ sender: Any) {
         let alertController = UIAlertController(title: "Value", message: "Please enter your amount of sit ups", preferredStyle: .alert)
@@ -328,8 +391,28 @@ class DailyVC: UIViewController {
     
 
     override func viewDidAppear(_ animated: Bool) {
-        var sitUpNumber = getSitUpValue()
+        
+        getSitUpValue()
+        getCurrentMedals()
+        
+        checkIfNewDay(completion: { isNew in
+            if isNew {
+                self.savedChangesText.text = "Please press update day"
+                self.giveMedalsAndSetScoresToZero()
+            } else {
+                print("is not a new day.")
+                self.savedChangesText.text = ""
+            }
+        })
+        
+        
+        
+        self.currentDate = getCurrentDate()
         print("hello")
+        print("//FINISHED THE PROGRAM - TIME TO RESET//")
+        print(self.currentDate)
+        print(self.getCurrentDate())
+        
         
     }
     

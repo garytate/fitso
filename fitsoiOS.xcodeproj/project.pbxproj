@@ -21,6 +21,7 @@
 		4E62729E1E827C8800090B77 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E6272991E827C8800090B77 /* GoogleService-Info.plist */; };
 		4E62729F1E827C8800090B77 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E62729A1E827C8800090B77 /* LoginVC.swift */; };
 		4E6272A01E827C8800090B77 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E62729B1E827C8800090B77 /* RegisterVC.swift */; };
+		4E83938E1EB23E4500DB517F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E83938D1EB23E4500DB517F /* GoogleService-Info.plist */; };
 		4EC5D7B71E8555BF00C9CEF7 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC5D7B61E8555BF00C9CEF7 /* ProfileVC.swift */; };
 		4EE101C31E82B6B900598F4A /* AkiraTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE101B71E82B6B900598F4A /* AkiraTextField.swift */; };
 		4EE101C41E82B6B900598F4A /* HoshiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE101B81E82B6B900598F4A /* HoshiTextField.swift */; };
@@ -53,6 +54,7 @@
 		4E6272991E827C8800090B77 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4E62729A1E827C8800090B77 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		4E62729B1E827C8800090B77 /* RegisterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
+		4E83938D1EB23E4500DB517F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4EC5D7B61E8555BF00C9CEF7 /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		4EE101B71E82B6B900598F4A /* AkiraTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AkiraTextField.swift; sourceTree = "<group>"; };
 		4EE101B81E82B6B900598F4A /* HoshiTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoshiTextField.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				4E3285841E8C4B920019894D /* DailyVC.swift */,
 				4E62729A1E827C8800090B77 /* LoginVC.swift */,
 				4E62729B1E827C8800090B77 /* RegisterVC.swift */,
+				4E83938D1EB23E4500DB517F /* GoogleService-Info.plist */,
 				4E1D60CF1E8A539B00C4533B /* ChallengesVC.swift */,
 				4E5CFC671E9BA26B00B2D503 /* DashboardVC.swift */,
 			);
@@ -230,6 +233,7 @@
 				4E62729E1E827C8800090B77 /* GoogleService-Info.plist in Resources */,
 				4E555FAF1E8127D8008DAE2D /* Assets.xcassets in Resources */,
 				4EE101C51E82B6B900598F4A /* Info.plist in Resources */,
+				4E83938E1EB23E4500DB517F /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
