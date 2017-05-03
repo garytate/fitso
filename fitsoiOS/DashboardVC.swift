@@ -37,13 +37,13 @@ class dashboardVC: UIViewController {
     }
     
     @IBOutlet weak var numberProgress: UILabel!
-    
-    
-    func doesUserHavePersonalGoal() {
-        
-    }
-    
+   
     func setDailyProgressPercentage() -> Double {
+        /*
+        This is a function which mathematically works out the overall progression from the
+        day and puts it into a ring progression which is a visual representation of the progress
+        for the day
+        */
         var testValue:Int = 0
         var ref: FIRDatabaseReference!
         ref = FIRDatabase.database().reference()
@@ -73,30 +73,18 @@ class dashboardVC: UIViewController {
     }
     
     func drawRingProgress() {
+        /*
+        This is the function which initialises the
+        ring progress to show on the screen
+        */
         CATransaction.begin()
         CATransaction.setAnimationDuration(2.0)
         ringProgress.progress = setDailyProgressPercentage()
         CATransaction.commit()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) { // run on window open
         drawRingProgress()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
