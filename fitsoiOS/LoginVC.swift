@@ -28,6 +28,7 @@ class LoginVC: UIViewController {
     
     //Button to show the password
     @IBAction func eyeButton(_ sender: UIButton) {
+        //Ran when the show password button is pressed
         if (!isPasswordShown) {
             passwordField.isSecureTextEntry = false
             isPasswordShown = true
@@ -49,6 +50,12 @@ class LoginVC: UIViewController {
     }
     
     @IBAction func loginPressed(_ sender: UIButton) {
+        /*
+        Checks if the fields are empty, and if they are not
+        it will send in a login request to the framework
+        and pull back if there is an error, if there is no error
+        it will let the user login
+        */
         if (emailField.text! == "" || passwordField.text! == "") {
             emptyWarning.text = "A field was left empty"
             emptyWarning.isHidden = false
